@@ -95,8 +95,8 @@ const app = {
         // Mock parsing data (In real world, parse the Pix String)
         // For this demo, we assume any QR code is valid and generate mock data
         app.paymentData = {
-            amount: "50,00",
-            payee: "Loja Exemplo - QR Scanned",
+            amount: "4,40",
+            payee: "Prefeitura Municipal De Limeira",
             date: new Date().toLocaleDateString('pt-BR')
         };
 
@@ -193,8 +193,8 @@ const app = {
         latestItem.onclick = () => {
             // Setup receipt data for consistency
             app.paymentData = {
-                payee: "Loja Exemplo",
-                amount: "50,00",
+                payee: "Prefeitura Municipal De Limeira",
+                amount: "4,40",
                 date: now.toLocaleDateString('pt-BR')
             };
             app.generateReceipt(); // Refresh time in receipt
@@ -207,10 +207,10 @@ const app = {
             <div class="transaction-info">
                 <div class="t-top-row">
                     <span>Pix enviado</span>
-                    <span class="amount-out">- R$ 50,00</span>
+                    <span class="amount-out">- R$ 4,40</span>
                 </div>
                 <div class="t-bottom-row">
-                    <span>${latestItem.getAttribute('data-payee') || 'Loja Exemplo'}</span>
+                    <span>${latestItem.getAttribute('data-payee') || 'Prefeitura Municipal De Limeira'}</span>
                     <span>${latestTime}</span>
                 </div>
             </div>

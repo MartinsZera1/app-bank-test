@@ -13,25 +13,35 @@ const app = {
             return;
         }
 
-        // Use Html5QrcodeScanner
-        // We use a slight delay to ensure container is visible
-        setTimeout(() => {
-            app.scanner = new Html5QrcodeScanner(
-                "reader",
-                { fps: 10, qrbox: { width: 250, height: 250 } },
-                /* verbose= */ false
-            );
+        // Use Html5Qrcode for custom control (auto-start)
+        const scannerId = "reader";
+        app.scanner = new Html5Qrcode(scannerId);
 
-            app.scanner.render(app.onScanSuccess, app.onScanFailure);
-        }, 300);
+        const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+        
+        // Start the camera automatically
+        app.scanner.start(
+            { facingMode: "environment" }, // Prefer back camera
+            config,
+            app.onScanSuccess,
+            app.onScanFailure
+        ).catch(err => {
+            console.error("Error starting scanner", err);
+            // Optional: Show a UI error message to the user
+            document.getElementById('reader').innerHTML = `<p style="color:red; text-align:center; padding:20px;">Erro ao acessar câmera: ${err}</p>`;
+        });
     },
 
     stopScanner: () => {
         if (app.scanner) {
-            app.scanner.clear().catch(error => {
-                console.error("Failed to clear scanner", error);
+            app.scanner.stop().then(() => {
+                app.scanner.clear();
+                app.scanner = null;
+            }).catch(err => {
+                console.error("Failed to stop scanner", err);
+                // Even if stop fails, let's try to nullify to reset state if possible or handle it
+                // Usually bad state, but for now just logging.
             });
-            app.scanner = null;
         }
     },
 

@@ -4,7 +4,48 @@ const app = {
 
     init: () => {
         console.log('App Initialized');
-        // Initial setup if needed
+        // Check for user data
+        const userData = localStorage.getItem('interUser');
+        if (userData) {
+            app.user = JSON.parse(userData);
+            app.updateUserInfo();
+        } else {
+            // Show Modal
+            document.getElementById('user-setup-modal').classList.remove('hidden');
+        }
+    },
+
+    saveUserSetup: () => {
+        const nameInput = document.getElementById('setup-name').value.trim();
+        const cpfInput = document.getElementById('setup-cpf').value.trim();
+
+        if (!nameInput || !cpfInput) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        app.user = {
+            name: nameInput,
+            cpf: cpfInput
+        };
+
+        localStorage.setItem('interUser', JSON.stringify(app.user));
+        app.updateUserInfo();
+
+        // Hide Modal
+        document.getElementById('user-setup-modal').classList.add('hidden');
+    },
+
+    updateUserInfo: () => {
+        if (!app.user) return;
+
+        // Update Header
+        // Gets first name for header
+        const firstName = app.user.name.split(' ')[0];
+        const headerName = document.getElementById('header-username');
+        if (headerName) headerName.innerText = `Olá, ${firstName}`;
+
+        // Any other real-time updates if needed
     },
 
     startScanner: () => {
@@ -18,7 +59,7 @@ const app = {
         app.scanner = new Html5Qrcode(scannerId);
 
         const config = { fps: 10, qrbox: { width: 250, height: 250 } };
-        
+
         // Start the camera automatically
         app.scanner.start(
             { facingMode: "environment" }, // Prefer back camera
@@ -114,6 +155,12 @@ const app = {
         // Generate random ID
         const randomId = 'E' + Date.now() + Math.floor(Math.random() * 10000000000);
         document.getElementById('receipt-id').innerText = randomId;
+
+        // Update Payer Info from Global User Data
+        if (app.user) {
+            document.getElementById('receipt-payer-name').innerText = app.user.name.toUpperCase();
+            document.getElementById('receipt-payer-cpf').innerText = app.user.cpf;
+        }
     },
 
     loadExtrato: () => {

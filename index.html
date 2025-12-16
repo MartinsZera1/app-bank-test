@@ -26,7 +26,7 @@
                     <div class="avatar-inter">
                         <span>H</span>
                     </div>
-                    <span>Olá, Henrique</span>
+                    <span id="header-username">Olá, Henrique</span>
                     <i class="ph ph-caret-right" style="font-size: 14px; color: var(--primary-color);"></i>
                 </div>
                 <div class="header-actions">
@@ -34,6 +34,25 @@
                     <i class="ph ph-list"></i>
                 </div>
             </header>
+
+            <!-- USER INFO MODAL -->
+            <div id="user-setup-modal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Bem-vindo</h2>
+                        <p>Para começar, precisamos de alguns dados.</p>
+                    </div>
+                    <div class="input-group">
+                        <label>Nome Completo</label>
+                        <input type="text" id="setup-name" placeholder="Ex: João da Silva">
+                    </div>
+                    <div class="input-group">
+                        <label>CPF</label>
+                        <input type="text" id="setup-cpf" placeholder="000.000.000-00">
+                    </div>
+                    <button class="primary-btn" onclick="app.saveUserSetup()">Salvar e Continuar</button>
+                </div>
+            </div>
 
             <!-- BALANCE SECTION -->
             <div class="balance-card" onclick="router.navigateTo('extrato')">
@@ -364,11 +383,11 @@
                     <h3>Quem pagou</h3>
                     <div class="detail-row">
                         <span>Nome</span>
-                        <strong>HENRIQUE DE ALMEIDA PRADO FERREIRA CERIDORIO</strong>
+                        <strong id="receipt-payer-name">HENRIQUE DE ALMEIDA PRADO FERREIRA CERIDORIO</strong>
                     </div>
                     <div class="detail-row">
                         <span>Cpf/Cnpj</span>
-                        <strong>***.813.008-**</strong>
+                        <strong id="receipt-payer-cpf">***.813.008-**</strong>
                     </div>
                     <div class="detail-row">
                         <span>Instituição</span>

@@ -1,0 +1,716 @@
+:root {
+    --bg-color: #121212;
+    /* Deep Black/Grey */
+    --card-bg: #222222;
+    /* Slightly Lighter for cards */
+    --primary-color: #FF7A00;
+    /* INTER ORANGE is now primary usage for accents */
+    --text-primary: #F5F6FA;
+    --text-secondary: #A0A0A0;
+    --success-color: #00C853;
+    --font-family: 'Inter', sans-serif;
+    --border-radius: 8px;
+    /* Inter uses softer squares */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    position: relative;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* SCROLLABLE AREAS */
+.screen {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    padding-bottom: 100px;
+    /* Space for bottom nav */
+    background: var(--bg-color);
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.screen.hidden {
+    display: none !important;
+}
+
+.screen.active {
+    display: block;
+    /* Restore block display for non-flex screens */
+}
+
+/* --- HEADER --- */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-top: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+}
+
+.avatar-inter {
+    width: 40px;
+    height: 40px;
+    background: #333;
+    color: var(--primary-color);
+    border-radius: 8px;
+    /* Square with radius */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 20px;
+    color: var(--primary-color);
+    font-size: 24px;
+}
+
+/* --- BALANCE CARD --- */
+.balance-card {
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.balance-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.balance-top span {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.balance-bottom {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 600;
+    gap: 5px;
+}
+
+/* --- QUICK ACTIONS (GRID/SCROLL) --- */
+.quick-actions {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.quick-actions::-webkit-scrollbar {
+    display: none;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 72px;
+    cursor: pointer;
+}
+
+.icon-square {
+    width: 65px;
+    height: 65px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    /* Inter style squares */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    transition: background 0.2s;
+}
+
+.action-btn:active .icon-square {
+    background: #333;
+}
+
+.action-btn span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* --- SECTIONS --- */
+.section-container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Credit Card Box */
+.card-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.invoice-row h3 {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.limit-bar {
+    width: 100%;
+    height: 4px;
+    background: #444;
+    border-radius: 2px;
+    margin: 5px 0;
+}
+
+.limit-fill {
+    height: 100%;
+    background: var(--success-color);
+    border-radius: 2px;
+}
+
+.limit-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Shop Banner */
+.shop-banner {
+    background: linear-gradient(90deg, #ff7a00 0%, #ff9e00 100%);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.shop-text {
+    flex: 1;
+}
+
+.shop-tag {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.shop-text h3 {
+    margin: 8px 0 4px;
+    font-size: 18px;
+}
+
+.shop-text p {
+    font-size: 12px;
+    opacity: 0.9;
+    width: 90%;
+}
+
+.shop-icon {
+    font-size: 40px;
+    opacity: 0.8;
+}
+
+/* Investments */
+.inv-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inv-btn {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Extras Grid */
+.extras-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.extra-item {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.extra-item i {
+    font-size: 24px;
+}
+
+
+/* --- BOTTOM NAV --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: var(--card-bg);
+    /* Solid styling */
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-top: 1px solid #333;
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    color: var(--text-secondary);
+    gap: 4px;
+    cursor: pointer;
+}
+
+.nav-item i {
+    font-size: 22px;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+}
+
+
+/* --- SUB PAGES (Pix, Extrato, etc) --- */
+.sub-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    /* Orange back arrow */
+    font-size: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+/* PIX SPECIFIC */
+.pix-hero-btn {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero-icon {
+    color: var(--primary-color);
+    font-size: 32px;
+}
+
+.pix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.grid-item {
+    background: var(--card-bg);
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+
+/* --- EXTRATO (Updated) --- */
+#extrato {
+    padding: 5vw;
+}
+
+/* User Padding */
+
+#transaction-list {
+    margin-top: 20px;
+}
+
+.history-date-header {
+    background: #333;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.transaction-item {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+.icon-out {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.icon-in {
+    background: rgba(0, 200, 83, 0.2);
+    color: var(--success-color);
+}
+
+.amount-out {
+    color: #fff;
+    font-weight: 600;
+}
+
+.amount-in {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+/* --- RECEIPT (Inter Specifics) --- */
+/* Re-using previous structural CSS but ensuring colors match new variables */
+#receipt {
+    background: #000;
+}
+
+.receipt-nav {
+    background: #000;
+    padding: 15px;
+}
+
+.status-section h2 {
+    color: #fff;
+}
+
+.share-btn {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+/* SCANNER & PAY DETAILS */
+.primary-btn {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    width: 100%;
+
+}
+
+/* SCANNER RESTORATION */
+#reader-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    min-height: 400px;
+    /* Force height */
+}
+
+.hidden {
+    display: none !important;
+}
+
+#reader {
+    width: 100%;
+}
+
+.scanner-instruction {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* PROCESSING OVERLAY RESTORATION */
+#processing-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    /* darker for immersive feel */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 122, 0, 0.3);
+    /* Orange hint */
+    border-radius: 50%;
+    border-top: 4px solid var(--primary-color);
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* RECEIPT LAYOUT FIXES */
+.receipt-content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 20px;
+}
+
+.status-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0 40px;
+}
+
+.success-circle {
+    width: 65px;
+    height: 65px;
+    background: var(--success-color);
+    /* Green circle */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(0, 200, 83, 0.3);
+}
+
+.receipt-amount {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.details-group {
+    margin-bottom: 20px;
+}
+
+.details-group h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.detail-row span {
+    color: var(--text-secondary);
+    width: 40%;
+}
+
+.detail-row strong {
+    color: #fff;
+    width: 60%;
+    text-align: right;
+    word-break: break-all;
+}
+
+.divider {
+    height: 1px;
+    background: #333;
+    margin: 25px 0;
+    border-top: 1px dashed #555;
+    background: transparent;
+}
+
+.receipt-footer {
+    padding: 20px;
+    background: #000;
+    border-top: 1px solid #222;
+}
+
+/* PAYMENT DETAILS FIXES */
+.payment-summary {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.amount-large {
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    margin: 15px 0 40px;
+}
+
+.payment-info-box {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+    font-size: 14px;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+/* RECEIPT BUTTONS FIX */
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-btn {
+    background: var(--primary-color);
+    color: #fff;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.share-btn:active {
+    opacity: 0.8;
+}
+
+.receipt-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    font-weight: 600;
+    font-size: 16px;
+}

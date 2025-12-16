@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Banco Inter Simulação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Icon Library (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- QR Code Library -->
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- DASHBOARD SECTION -->
+        <section id="dashboard" class="screen active">
+            <!-- TOP HEADER WITH EYE AND CONFIG -->
+            <header class="app-header">
+                <div class="user-profile">
+                    <div class="avatar-inter">
+                        <span>H</span>
+                    </div>
+                    <span>Olá, Henrique</span>
+                    <i class="ph ph-caret-right" style="font-size: 14px; color: var(--primary-color);"></i>
+                </div>
+                <div class="header-actions">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <i class="ph ph-list"></i>
+                </div>
+            </header>
+
+            <!-- BALANCE SECTION -->
+            <div class="balance-card" onclick="router.navigateTo('extrato')">
+                <div class="balance-top">
+                    <span>R$ 1.450,23</span>
+                    <i class="ph ph-eye-slash"></i>
+                </div>
+                <div class="balance-bottom">
+                    <span>Ver extrato</span>
+                    <i class="ph ph-caret-right"></i>
+                </div>
+            </div>
+
+            <!-- QUICK ACTIONS (SCROLL) -->
+            <div class="quick-actions">
+                <div class="action-btn" onclick="router.navigateTo('pix-menu')">
+                    <div class="icon-square">
+                        <i class="ph ph-pix-logo"></i>
+                    </div>
+                    <span>Pix</span>
+                </div>
+                <!-- ... other buttons ... -->
+                <div class="action-btn" onclick="router.navigateTo('extrato')">
+                    <div class="icon-square">
+                        <i class="ph ph-receipt"></i>
+                    </div>
+                    <span>Extrato</span>
+                </div>
+                <div class="action-btn">
+                    <div class="icon-square">
+                        <i class="ph ph-barcode"></i>
+                    </div>
+                    <span>Pagar</span>
+                </div>
+                <div class="action-btn">
+                    <div class="icon-square">
+                        <i class="ph ph-arrows-left-right"></i>
+                    </div>
+                    <span>Transferir</span>
+                </div>
+                <div class="action-btn">
+                    <div class="icon-square">
+                        <i class="ph ph-credit-card"></i>
+                    </div>
+                    <span>Cartões</span>
+                </div>
+                <div class="action-btn">
+                    <div class="icon-square">
+                        <i class="ph ph-chart-line-up"></i>
+                    </div>
+                    <span>Investir</span>
+                </div>
+                <div class="action-btn">
+                    <div class="icon-square">
+                        <i class="ph ph-gift"></i>
+                    </div>
+                    <span>Gift Card</span>
+                </div>
+            </div>
+
+            <!-- MY CARDS / INVOICE -->
+            <div class="section-container">
+                <div class="section-header">
+                    <h3>Meus Cartões</h3>
+                    <i class="ph ph-caret-right"></i>
+                </div>
+                <div class="card-display">
+                    <div class="card-row">
+                        <i class="ph-fill ph-credit-card" style="color: var(--primary-color);"></i>
+                        <span>Mastercard Black</span>
+                    </div>
+                    <div class="invoice-row">
+                        <span>Fatura atual</span>
+                        <h3 style="color: #fff;">R$ 450,90</h3>
+                    </div>
+                    <div class="limit-bar">
+                        <div class="limit-fill" style="width: 30%;"></div>
+                    </div>
+                    <span class="limit-text">Limite disponível: R$ 3.000,00</span>
+                </div>
+            </div>
+
+            <!-- INTER SHOP BANNER -->
+            <div class="shop-banner">
+                <div class="shop-text">
+                    <span class="shop-tag">CASHBACK</span>
+                    <h3>Shopping</h3>
+                    <p>As melhores lojas com dinheiro de volta na conta.</p>
+                </div>
+                <div class="shop-icon">
+                    <i class="ph-fill ph-bag"></i>
+                </div>
+            </div>
+
+            <!-- INVESTMENTS SUMMARY -->
+            <div class="section-container">
+                <div class="section-header">
+                    <h3>Investimentos</h3>
+                    <i class="ph ph-caret-right"></i>
+                </div>
+                <div class="inv-summary">
+                    <div class="inv-value">
+                        <span>Total investido</span>
+                        <h3>R$ 12.450,00</h3>
+                    </div>
+                    <button class="inv-btn">Ver carteira</button>
+                </div>
+            </div>
+
+            <!-- EXTRAS GRID -->
+            <div class="extras-grid">
+                <div class="extra-item">
+                    <i class="ph ph-shield-check" style="color: var(--primary-color);"></i>
+                    <span>Seguros</span>
+                </div>
+                <div class="extra-item">
+                    <i class="ph ph-house-line" style="color: var(--primary-color);"></i>
+                    <span>Empréstimo</span>
+                </div>
+                <div class="extra-item">
+                    <i class="ph ph-airplane-tilt" style="color: var(--primary-color);"></i>
+                    <span>Viagens</span>
+                </div>
+            </div>
+
+            <!-- Bottom Tab Bar -->
+            <nav class="bottom-nav">
+                <div class="nav-item active">
+                    <i class="ph-fill ph-house"></i>
+                    <span>Início</span>
+                </div>
+                <div class="nav-item">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <span>Busca</span>
+                </div>
+                <div class="nav-item">
+                    <i class="ph ph-currency-dollar"></i>
+                    <span>Conta</span>
+                </div>
+                <div class="nav-item">
+                    <i class="ph ph-chart-bar"></i>
+                    <span>Investir</span>
+                </div>
+                <div class="nav-item">
+                    <i class="ph ph-handbag"></i>
+                    <span>Shop</span>
+                </div>
+            </nav>
+        </section>
+
+        <!-- PIX MENU SECTION -->
+        <section id="pix-menu" class="screen hidden">
+            <header class="sub-header">
+                <button class="back-btn" onclick="router.navigateTo('dashboard')">
+                    <i class="ph ph-arrow-left"></i>
+                </button>
+                <h3>Área Pix</h3>
+            </header>
+
+            <div class="pix-options">
+                <div class="pix-hero-btn" onclick="router.navigateTo('scanner')">
+                    <div class="hero-icon">
+                        <i class="ph ph-qr-code"></i>
+                    </div>
+                    <div class="hero-text">
+                        <h4>Ler QR Code</h4>
+                        <p>Pagamento rápido via câmera</p>
+                    </div>
+                    <i class="ph ph-caret-right"></i>
+                </div>
+
+                <div class="pix-grid">
+                    <div class="grid-item">
+                        <i class="ph ph-key"></i>
+                        <span>Chave Pix</span>
+                    </div>
+                    <div class="grid-item">
+                        <i class="ph ph-copy"></i>
+                        <span>Copia e Cola</span>
+                    </div>
+                    <div class="grid-item">
+                        <i class="ph ph-user-plus"></i>
+                        <span>Cobrar</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCANNER SECTION -->
+        <section id="scanner" class="screen hidden">
+            <header class="sub-header">
+                <button class="back-btn" onclick="router.navigateTo('pix-menu')">
+                    <i class="ph ph-x"></i>
+                </button>
+                <h3>Ler QR Code</h3>
+            </header>
+            <div id="reader-container">
+                <div id="reader"></div>
+                <p class="scanner-instruction">Aponte a câmera para o código QR</p>
+                <button id="simulate-scan-btn" onclick="app.simulateScan()"
+                    style="margin-top: 20px; background: #333; color: #fff; padding: 10px; border: none; border-radius: 8px;">(Debug)
+                    Simular Scan</button>
+            </div>
+        </section>
+
+        <!-- PAYMENT DETAILS SECTION -->
+        <section id="payment-details" class="screen hidden">
+            <header class="sub-header">
+                <button class="back-btn" onclick="router.navigateTo('pix-menu')">
+                    <i class="ph ph-arrow-left"></i>
+                </button>
+                <h3>Revisar Pagamento</h3>
+            </header>
+
+            <div class="payment-summary">
+                <span class="label">Valor a pagar</span>
+                <h1 class="amount-large">R$ 50,00</h1>
+
+                <div class="payment-info-box">
+                    <div class="info-row">
+                        <span>Para</span>
+                        <strong id="payee-name">Loja Exemplo LTDA</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Instituição</span>
+                        <strong>Banco Fictício S.A.</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Data</span>
+                        <strong id="payment-date">Hoje</strong>
+                    </div>
+                </div>
+
+                <button class="primary-btn" onclick="app.processPayment()">
+                    Pagar agora
+                </button>
+            </div>
+        </section>
+
+        <!-- PROCESSING OVERLAY -->
+        <div id="processing-overlay" class="hidden">
+            <div class="loader"></div>
+            <p>Processando pagamento...</p>
+        </div>
+
+        <!-- EXTRATO SECTION -->
+        <section id="extrato" class="screen hidden">
+            <header class="sub-header">
+                <button class="back-btn" onclick="router.navigateTo('dashboard')">
+                    <i class="ph ph-arrow-left"></i>
+                </button>
+                <h3>Extrato</h3>
+                <div style="flex:1"></div>
+                <i class="ph ph-magnifying-glass" style="font-size: 20px;"></i>
+            </header>
+
+            <div id="transaction-list">
+                <!-- Javascript will populate this -->
+            </div>
+        </section>
+
+        <!-- RECEIPT SECTION -->
+        <section id="receipt" class="screen hidden">
+            <header class="receipt-nav">
+                <button class="icon-btn" onclick="router.navigateTo('dashboard')">
+                    <i class="ph ph-arrow-left"></i>
+                </button>
+                <span class="nav-title">Comprovante</span>
+                <button class="icon-btn" onclick="router.navigateTo('dashboard')">
+                    <i class="ph ph-house"></i>
+                </button>
+            </header>
+
+            <div class="receipt-content-scroll">
+                <div class="status-section">
+                    <div class="success-circle">
+                        <i class="ph-bold ph-check"></i>
+                    </div>
+                    <h2>Pix enviado</h2>
+                    <h1 class="receipt-amount">R$ 50,00</h1>
+                </div>
+
+                <div class="details-group">
+                    <h3>Sobre a transação</h3>
+                    <div class="detail-row">
+                        <span>Data da transação</span>
+                        <strong id="receipt-date-full">Quarta-feira, 10/12/2025</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Horário</span>
+                        <strong id="receipt-time">16h48</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Identificador</span>
+                        <strong>CAT01CARRO</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>ID da transação</span>
+                        <strong class="receipt-id-text" id="receipt-id">E00416968202512101947Haa6RgxMUn3</strong>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="details-group">
+                    <h3>Quem recebeu</h3>
+                    <div class="detail-row">
+                        <span>Nome</span>
+                        <strong id="receipt-payee">Loja Exemplo</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Cpf/Cnpj</span>
+                        <strong>45.132.495/0001-40</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Instituição</span>
+                        <strong>BCO SANTANDER (BRASIL) S.A.</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Chave Pix</span>
+                        <strong>financeiro@limeira.sp.gov.br</strong>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="details-group">
+                    <h3>Quem pagou</h3>
+                    <div class="detail-row">
+                        <span>Nome</span>
+                        <strong>HENRIQUE DE ALMEIDA PRADO FERREIRA CERIDORIO</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Cpf/Cnpj</span>
+                        <strong>***.813.008-**</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Instituição</span>
+                        <strong>BANCO INTER</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="receipt-footer">
+                <button class="share-btn">Compartilhar comprovante</button>
+            </div>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
